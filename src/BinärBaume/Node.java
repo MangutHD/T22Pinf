@@ -1,2 +1,10 @@
-package BinärBaume;public interface Node {
+package BinärBaume;
+
+public abstract interface Node {
+
+
+        public double getValue();
+
+
+
 }
