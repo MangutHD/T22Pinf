@@ -3,52 +3,71 @@ package Polynom;
 public class Polynom {
 
 
-    private final double[] arr;
+    private final double[] coefficient;
 
-    public Polynom(double[] arr){
-        this.arr = arr;
+    public Polynom(double[] coefficient){
+        this.coefficient = coefficient;
     }
 
-    public void koeffizient(){
-        System.out.print("f(x)=");
-        for (int i = 0; i < arr.length; i++){
-            if(arr[i] == 0){
-                i++;
-            }
-            System.out.print(arr[i]+"x^"+i+" ");
-    }
-
-    }
 
     public double funktionswert(double x){
 
-        float sum = 0.0f;
+        double sum = 0.0;
 
-        for(int i = 0; i < arr.length; i++){
-            sum += arr[i] * Math.pow(x, i);
+        for(int i = 0; i < coefficient.length; i++){
+            sum += coefficient[i] * Math.pow(x, i);
         }
         System.out.println(sum);
         return sum;
     }
 
-    public void grad(){
-
+    public int grad(){
+        for (int i = coefficient.length; i > 0; i--){
+            if(coefficient[i] != 0){
+                return i;
+            }
+        }
+        return 0;
     }
 
-    public void achsensymmetrisch(){
+    public int Symmetrie(){
 
+        int sym = 0;
+        for (int i = 0; i < coefficient.length; i++){
+
+        }
+
+        return sym;
     }
 
-    public void punktsymmetrisch(){
+    public double[] ableitung(){
+        double[] ableitung = new double[5];
+        for (int i = 0; i < coefficient.length; i++){
+            if(i == 0){
+                ableitung[i] = 0;
+            }else ableitung[i-1] =  coefficient[i] * i;
 
+        }
+        return ableitung;
     }
 
     @Override
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < this.arr.length; i++){
-
+        stringBuilder.append("f(x)= ");
+        for (int i = coefficient.length-1; i >= 0; i--){
+            if(coefficient[i] != 0){
+                stringBuilder.append(coefficient[i]);
+                 if(i != 0){
+                    stringBuilder.append("x");
+                     if(i != 1){
+                         stringBuilder.append("^").append(i).append(" + ");
+                     }
+                }
+            }
         }
+        System.out.println();
+        System.out.println(stringBuilder);
         return stringBuilder.toString();
     }
 
