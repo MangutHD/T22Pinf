@@ -46,8 +46,9 @@ public class Polynom {
             if(i == 0){
                 ableitung[i] = 0;
             }else ableitung[i-1] =  coefficient[i] * i;
-
+            System.out.println(ableitung[i]);
         }
+
         return ableitung;
     }
 
@@ -66,7 +67,7 @@ public class Polynom {
                 }
             }
         }
-        System.out.println();
+
         System.out.println(stringBuilder);
         return stringBuilder.toString();
     }
