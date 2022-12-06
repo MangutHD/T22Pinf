@@ -1,4 +1,4 @@
-package BinärBaume.test;
+package Polynom.test;
 
 import Polynom.Polynom;
 import org.junit.jupiter.api.Test;
