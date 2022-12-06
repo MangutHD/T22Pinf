@@ -8,6 +8,7 @@ public class Polynom {
     private final double[] coefficient;
     private int derivationCounter = 0;
 
+
     public Polynom(double[] coefficient){
         this.coefficient = coefficient;
     }
