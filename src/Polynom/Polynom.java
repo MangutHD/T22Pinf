@@ -7,18 +7,23 @@ public class Polynom {
 
     private final double[] coefficient;
     private int derivationCounter = 0;
+    private double maxima;
+    private double minima;
 
-
-    public Polynom(double[] coefficient){
+    public Polynom(double[] coefficient) {
         this.coefficient = coefficient;
+
     }
-    private Polynom(double[] coefficient, int derivationCounter){
+
+    private Polynom(double[] coefficient, int derivationCounter) {
         this.coefficient = coefficient;
         this.derivationCounter = derivationCounter;
+
     }
-    public int getDegree(){
-        for (int i = coefficient.length-1; i >= 0; i--){
-            if(coefficient[i] != 0){
+
+    public int getDegree() {
+        for (int i = coefficient.length - 1; i >= 0; i--) {
+            if (coefficient[i] != 0) {
                 return i;
             }
         }
@@ -47,20 +52,20 @@ public class Polynom {
         return true;
     }
 
-    public double functionValue(double x){
+    public double functionValue(double x) {
         double sum = 0.0;
 
-        for(int i = 0; i < coefficient.length; i++){
+        for (int i = 0; i < coefficient.length; i++) {
             sum += coefficient[i] * Math.pow(x, i);
         }
 
         return sum;
     }
 
-    public double[] derivationCoefficients(){
-        double[] derivation = { 0.0, 0.0, 0.0, 0.0, 0.0 };
-        for (int i = 0; i < coefficient.length-1; i++){
-            derivation[i] = (i+1) * coefficient[i+1];
+    public double[] derivationCoefficients() {
+        double[] derivation = {0.0, 0.0, 0.0, 0.0, 0.0};
+        for (int i = 0; i < coefficient.length - 1; i++) {
+            derivation[i] = (i + 1) * coefficient[i + 1];
             System.out.println(derivation[i]);
         }
 
@@ -68,22 +73,22 @@ public class Polynom {
     }
 
     public Polynom derivationPolynom() {
-        return new Polynom(derivationCoefficients(), (derivationCounter+1));
+        return new Polynom(derivationCoefficients(), (derivationCounter + 1));
     }
 
-    public ArrayList<Double> getZeropoints(){
+    public ArrayList<Double> getZeropoints() {
 
-        if(getDegree() == 4){
-
-        }
-        if(getDegree() == 3){
+        if (getDegree() == 4) {
 
         }
-        if(getDegree() == 2) {
+        if (getDegree() == 3) {
+
+        }
+        if (getDegree() == 2) {
             return getNullQuadratic();
 
         }
-        if(getDegree() == 1) {
+        if (getDegree() == 1) {
             return getNullLinear();
         }
         return new ArrayList<>();
@@ -115,7 +120,7 @@ public class Polynom {
         return list;
     }
 
-    public ArrayList<Double> getNull(){
+    public ArrayList<Double> getNull() {
 
         return null;
     }
@@ -151,7 +156,7 @@ public class Polynom {
     public String toString() {
         StringBuilder builder = new StringBuilder("f" + ("'".repeat(derivationCounter)) + "(x) = ");
 
-        for (int i = coefficient.length-1; i >= 0; i--) {
+        for (int i = coefficient.length - 1; i >= 0; i--) {
             if (coefficient[i] != 0) {
                 // Get the right operator in front of the value
                 if (i < getDegree()) {
@@ -163,12 +168,12 @@ public class Polynom {
                 builder.append(getNumber(i));
 
                 // If exponent is 0 --> (3) not (3x^0)
-                if (i == 0){
+                if (i == 0) {
                     continue;
                 }
                 builder.append("x");
                 // If exponent is 1 --> (3x) not (3x^1)
-                if (i == 1){
+                if (i == 1) {
                     continue;
                 }
                 // Default --> (3x^2)
